@@ -5,4 +5,12 @@
     <string name="txt_username">UserName</string>
     <string name="txt_password">Password</string>
     <string name="txt_version">Version 1.0</string>
+    <string name="txtIntents">Intents</string>
+    <string name="txtImplicit">Implicit</string>
+    <string name="txtExplicit">Explicit</string>
+    <string name="txtYouTube">YouTube</string>
+    <string name="txtGoogleMaps">Google Maps</string>
+    <string name="txtMessage">Are you sure?</string>
+    <string name="txtOk">OK</string>
+    <string name="txtCancel">CANCEL</string>
 </resources>
