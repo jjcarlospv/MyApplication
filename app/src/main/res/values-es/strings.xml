@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MiApp</string>
+    <string name="action_settings">Configuracion</string>
+    <string name="btn_login">Ingresar</string>
+    <string name="txt_username">Usuario</string>
+    <string name="txt_password">Contraseña</string>
+    <string name="txt_version">Version 1.0</string>
+</resources>
