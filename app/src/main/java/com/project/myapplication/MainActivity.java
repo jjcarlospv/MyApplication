@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickLogin(View view){
 
-        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
         intent.putExtra(EXTRA_NAME, etUserName.getText().toString());
         startActivity(intent);
     }

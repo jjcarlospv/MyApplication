@@ -13,4 +13,9 @@
     <string name="txtMessage">¿Está seguro?</string>
     <string name="txtOk">OK</string>
     <string name="txtCancel">CANCELAR</string>
+
+    <string name="btn_1">Boton1</string>
+    <string name="btn_2">Boton2</string>
+    <string name="btn_3">Boton3</string>
+    <string name="btn_4">Boton4</string>
 </resources>

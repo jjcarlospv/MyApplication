@@ -13,4 +13,8 @@
     <string name="txtMessage">Are you sure?</string>
     <string name="txtOk">OK</string>
     <string name="txtCancel">CANCEL</string>
+    <string name="btn_1">Button1</string>
+    <string name="btn_2">Button2</string>
+    <string name="btn_3">Button3</string>
+    <string name="btn_4">Button4</string>
 </resources>
