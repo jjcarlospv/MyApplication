@@ -2,7 +2,12 @@ package com.project.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -25,6 +30,12 @@ public class MenuActivity extends AppCompatActivity {
     private ClientsFragment clientsFragment;
     private SettingsFragment settingsFragment;
 
+    //BroadcastReceiver
+    private DataBroadcast dataBroadcast;
+    private IntentFilter intentFilter;
+    private String ACTION_DATA = "actionData";
+    private String ACTION_TEST = "actionTest";
+    private String MESSAGE_BROADCAST = "MessageBroadcast";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +52,11 @@ public class MenuActivity extends AppCompatActivity {
         clientsFragment = new ClientsFragment();
         settingsFragment = new SettingsFragment();
 
+        dataBroadcast = new DataBroadcast();
+        intentFilter = new IntentFilter();
+        intentFilter.addAction(ACTION_DATA);
+        intentFilter.addAction(ACTION_TEST);
+        registerReceiver(dataBroadcast, intentFilter);
 
         homeFragment.setHomeInterface(new HomeFragment.homeInterface() {
             @Override
@@ -56,6 +72,10 @@ public class MenuActivity extends AppCompatActivity {
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intentBroadcast = new Intent(ACTION_TEST);
+                intentBroadcast.putExtra(MESSAGE_BROADCAST, "Sending Action Test");
+                sendBroadcast(intentBroadcast);
+
                 getSupportFragmentManager().beginTransaction().replace(R.id.llContainer, homeFragment).commit();
             }
         });
@@ -63,6 +83,10 @@ public class MenuActivity extends AppCompatActivity {
         btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intentBroadcast = new Intent(ACTION_DATA);
+                intentBroadcast.putExtra(MESSAGE_BROADCAST, "Sending Action Data");
+                sendBroadcast(intentBroadcast);
+
                 getSupportFragmentManager().beginTransaction().replace(R.id.llContainer, reportFragment).commit();
             }
         });
@@ -81,5 +105,19 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //Receptor
+    private class DataBroadcast extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            if(intent != null){
+                String msg = intent.getStringExtra(MESSAGE_BROADCAST);
+                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+                Log.e("DATA_RECEIVED", msg);
+            }
+        }
     }
 }

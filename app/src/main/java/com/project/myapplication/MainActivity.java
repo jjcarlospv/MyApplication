@@ -1,6 +1,9 @@
 package com.project.myapplication;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -18,6 +21,12 @@ public class MainActivity extends AppCompatActivity {
 
     public static String EXTRA_NAME = "ExtraName";
     private EditText etUserName;
+    private EditText etPassword;
+
+    public static final String SHARE_APP = "mySharedData";
+    public String SHARE_USER_NAME = "userName";
+    public String SHARE_PASSWORD = "password";
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         etUserName = findViewById(R.id.etUserName);
+        etPassword = findViewById(R.id.etPassword);
+
+        //Shared preferences
+        sharedPreferences = getSharedPreferences(SHARE_APP, MODE_PRIVATE);
+        etUserName.setText(sharedPreferences.getString(SHARE_USER_NAME, ""));
+        etPassword.setText(sharedPreferences.getString(SHARE_PASSWORD, ""));
+        //////////
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -62,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickLogin(View view){
+
+        sharedPreferences.edit().putString(SHARE_USER_NAME, etUserName.getText().toString()).apply();
+        sharedPreferences.edit().putString(SHARE_PASSWORD, etPassword.getText().toString()).commit();
 
         Intent intent = new Intent(MainActivity.this, MenuActivity.class);
         intent.putExtra(EXTRA_NAME, etUserName.getText().toString());

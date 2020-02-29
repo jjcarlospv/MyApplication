@@ -18,4 +18,9 @@
     <string name="btn_2">Boton2</string>
     <string name="btn_3">Boton3</string>
     <string name="btn_4">Boton4</string>
+    <string name="txt_dni">DNI</string>
+    <string name="txt_address">Direccion</string>
+    <string name="txt_country">Country</string>
+    <string name="txt_setting">Setting</string>
+    <string name="txt_save">Save</string>
 </resources>
